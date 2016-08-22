@@ -109,10 +109,10 @@ public class LoginFragment extends Fragment {
                         mconnect.post(new Runnable() {
                             public void run() {
                                 if (conn) {
-                                    mconnect.setText("Connection Valid");
+                                    mconnect.setText(R.string.validDirectory);
                                     mconnect.setChecked(true);
                                 } else {
-                                    mconnect.setText("Connection Invalid");
+                                    mconnect.setText(R.string.invalidDirectory);
                                     mconnect.setChecked(false);
                                 }
                             }
@@ -121,10 +121,10 @@ public class LoginFragment extends Fragment {
                             mdirectory.post(new Runnable() {
                                 public void run() {
                                     if (direct) {
-                                        mdirectory.setText("Directory Valid");
+                                        mdirectory.setText(R.string.validDirectory);
                                         mdirectory.setChecked(true);
                                     } else {
-                                        mdirectory.setText("Directory Invalid");
+                                        mdirectory.setText(R.string.invalidDirectory);
                                         mdirectory.setChecked(false);
                                     }
                                 }

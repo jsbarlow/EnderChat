@@ -88,20 +88,9 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     public void openChat(){
 
-        if (!enableButton){
-            DialogFragment chatwarn = new DialogFragment() {
-                        @Override
-                        public Dialog onCreateDialog(Bundle bundle)
-                        {
-                            AlertDialog.Builder builder =
-                                    new AlertDialog.Builder(getActivity());
-                            builder.setCancelable(false);
-
-                            builder.setMessage(getResources().getString(R.string.chatwarning));
-                            return builder.create();
-                        }
-            };
-            chatwarn.show(getFragmentManager(), "Warning");
+        if (!enableButton) {
+            DialogFragment newFragment = WarningFragment.newInstance();
+            newFragment.show(getFragmentManager(), "Warning");
         }
         else {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -130,5 +119,23 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
         chatFragment.updateLogin(host, user, pass, port, filepath);
         enableButton = true;
+    }
+
+    public static class WarningFragment extends DialogFragment {
+
+        static WarningFragment newInstance() {
+            return new WarningFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle bundle)
+        {
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(getActivity());
+            builder.setCancelable(false);
+
+            builder.setMessage(getResources().getString(R.string.chatwarning));
+            return builder.create();
+        }
     }
 }
