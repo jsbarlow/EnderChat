@@ -1,0 +1,173 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.worksinprogress.joesbarlow.enderchat.LoginFragment"
+    android:clickable="false"
+    android:background="@drawable/vertical_chat"
+    android:gravity="center_vertical">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hostText"
+        android:hint="@string/enter_host_name"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="false"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#ffb2b35d"
+        android:background="#ff696969"
+        android:layout_alignParentLeft="false"
+        android:layout_above="@+id/portText"
+        android:layout_alignLeft="@+id/portText"
+        android:layout_alignRight="@+id/portText"
+        android:gravity="center|fill_vertical"
+        android:padding="10dp"
+        android:layout_alignTop="@+id/usernameText"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameText"
+        android:hint="@string/enter_username"
+        android:layout_marginBottom="32dp"
+        android:layout_above="@+id/passwordText"
+        android:layout_alignRight="@+id/passwordText"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:inputType="textEmailAddress"
+        android:background="#ff696969"
+        android:backgroundTint="#ffb2b35d"
+        android:layout_alignParentLeft="false"
+        android:gravity="center|fill_vertical"
+        android:height="32dp"
+        android:padding="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/passwordText"
+        android:hint="@string/enter_password"
+        android:gravity="center|fill_vertical"
+        android:layout_marginBottom="32dp"
+        android:inputType="textPassword"
+        android:backgroundTint="#ffb2b35d"
+        android:background="#ff696969"
+        android:layout_toRightOf="@+id/connectButton"
+        android:layout_centerVertical="true"
+        android:padding="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/portText"
+        android:hint="@string/enter_port_number"
+        android:gravity="center|fill_vertical"
+        android:backgroundTint="#ffb2b35d"
+        android:background="#ff696969"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/connectButton"
+        android:padding="10dp"
+        android:layout_alignTop="@+id/passwordText"
+        android:layout_marginBottom="32dp"
+        android:maxLines="1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/computerText"
+        android:hint="@string/enter_computer_id"
+        android:backgroundTint="#ffb2b35d"
+        android:background="#ff696969"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:gravity="center|fill_vertical"
+        android:padding="10dp"
+        android:layout_below="@+id/portText"
+        android:singleLine="false"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/worldText"
+        android:gravity="center|fill_vertical"
+        android:hint="@string/enter_world_name"
+        android:backgroundTint="#ffb2b35d"
+        android:background="#ff696969"
+        android:layout_below="@+id/computerText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:padding="10dp"
+        android:singleLine="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connect"
+        android:id="@+id/connectButton"
+        android:gravity="center|fill_vertical"
+        android:hint="@string/connect"
+        android:background="#ff5bff55"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/worldText" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/connectionStatus"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false"
+        android:clickable="false"
+        android:textColor="#ffffffff"
+        android:layout_below="@+id/connectButton"
+        android:layout_alignLeft="@+id/portText"
+        android:checked="false"
+        android:gravity="fill_vertical" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/directoryStatus"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="false"
+        android:clickable="false"
+        android:textColor="#ffffffff"
+        android:layout_alignLeft="@+id/connectionStatus"
+        android:layout_below="@+id/connectionStatus"
+        android:checked="false"
+        android:gravity="fill_vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/current_directory"
+        android:id="@+id/directory"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="false"
+        android:textColor="#ffffffff"
+        android:layout_alignRight="@+id/passwordText"
+        android:layout_alignTop="@+id/directoryStatus"
+        android:gravity="fill_vertical" />
+
+    <CheckBox
+        android:text="@string/remember_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffffff"
+        android:gravity="fill_vertical"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/rememberMe"
+        android:hint="@string/remember_me"
+        android:layout_above="@+id/directory"
+        android:layout_alignEnd="@+id/directory"
+        android:buttonTint="#ffffffff"
+        android:checked="false" />
+
+</RelativeLayout>

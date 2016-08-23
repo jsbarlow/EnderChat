@@ -119,8 +119,7 @@ public class FTPConnect {
     public boolean ftpMakeDirectory(String new_dir_path)
     {
         try {
-            boolean status = mFTPClient.makeDirectory(new_dir_path);
-            return status;
+            return mFTPClient.makeDirectory(new_dir_path);
         } catch(Exception e) {
             Log.d(TAG, "Error: could not create new directory named " + new_dir_path);
         }
@@ -133,8 +132,7 @@ public class FTPConnect {
     public boolean ftpRemoveDirectory(String dir_path)
     {
         try {
-            boolean status = mFTPClient.removeDirectory(dir_path);
-            return status;
+            return mFTPClient.removeDirectory(dir_path);
         } catch(Exception e) {
             Log.d(TAG, "Error: could not remove directory named " + dir_path);
         }

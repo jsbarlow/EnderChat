@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
             }
 
             loginFragment = new LoginFragment();
+            //boolean remember = settings.getBoolean("rememberMe", false);
 
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
@@ -53,12 +55,6 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
                     .add(R.id.fragment_container, loginFragment).commit();
         }
     }
-
-    /*@Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        FTPConnect FTPTest = ((MainActivity) getActivity()).FTPTest;
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
