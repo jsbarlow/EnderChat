@@ -177,7 +177,7 @@ public class FTPConnect {
     {
         boolean status = false;
         try {
-            FileOutputStream desFileStream = new FileOutputStream(desFilePath);;
+            FileOutputStream desFileStream = new FileOutputStream(desFilePath);
             status = mFTPClient.retrieveFile(srcFilePath, desFileStream);
             desFileStream.close();
 

@@ -25,7 +25,6 @@ public class LoginFragment extends Fragment {
     private boolean direct;
     private boolean remember;
     private FTPConnect FTPTest;
-    private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
     private String host;
@@ -64,7 +63,7 @@ public class LoginFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = preferences.edit();
         remember = preferences.getBoolean("remember", false);
         host = preferences.getString("host", "");
@@ -79,7 +78,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View _loginView = inflater.inflate(R.layout.fragment_login,container,false);
+        View _loginView = inflater.inflate(R.layout.fragment_login, container, false);
 
         mbutton = (Button) _loginView.findViewById(R.id.connectButton);
         mhost = (EditText) _loginView.findViewById(R.id.hostText);
@@ -95,7 +94,7 @@ public class LoginFragment extends Fragment {
         conn = false;
         FTPTest = new FTPConnect();
 
-        Typeface typeFace= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Minecraftia.ttf");
+        Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Minecraftia.ttf");
         mbutton.setTypeface(typeFace);
         mhost.setTypeface(typeFace);
         muser.setTypeface(typeFace);
@@ -123,7 +122,7 @@ public class LoginFragment extends Fragment {
         mbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch(motionEvent.getAction()) {
+                switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         mbutton.setBackgroundColor(Color.parseColor("#ff32922C"));
                         return true;
@@ -142,8 +141,9 @@ public class LoginFragment extends Fragment {
                         if (world.isEmpty())
                             world = "world";
                         comp = mcomp.getText().toString();
+                        filepath = getResources().getString(R.string.filepath, world, comp);
 
-                        if (mcheck.isChecked()){
+                        if (mcheck.isChecked()) {
                             editor.putBoolean("remember", true);
                             editor.putString("host", host);
                             editor.putString("user", user);
@@ -152,8 +152,7 @@ public class LoginFragment extends Fragment {
                             editor.putString("world", world);
                             editor.putString("comp", comp);
                             editor.commit();
-                        }
-                        else{
+                        } else {
                             editor.putBoolean("remember", false);
                             editor.putString("host", "");
                             editor.putString("user", "");
@@ -163,8 +162,6 @@ public class LoginFragment extends Fragment {
                             editor.putString("comp", "");
                             editor.commit();
                         }
-
-                        filepath = getResources().getString(R.string.filepath, world, comp);
 
                         new Thread(new Runnable() {
                             public void run() {
@@ -236,7 +233,7 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    public void onPause(){
+    public void onPause() {
         super.onPause();
 
         mconnect.setChecked(false);

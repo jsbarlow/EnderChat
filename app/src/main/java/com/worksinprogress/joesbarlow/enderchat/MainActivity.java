@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         enableButton = false;
+
+        // Checks if file directory for app exists. If not, it makes one.
         File mydir = new File(getResources().getString(R.string.store));
         if (!mydir.exists())
             mydir.mkdirs();
@@ -44,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
             }
 
             loginFragment = new LoginFragment();
-            //boolean remember = settings.getBoolean("rememberMe", false);
 
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         }
     }
 
+    // Function for the handling of the "Chat" button. If login, information is incorrect the
+    // chat fragment will not open and a warning dialog fragment will appear.
     public void openChat(){
 
         if (!enableButton) {
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         }
     }
 
+    // Function for the handling of the "Login" button.
     public void openLogin(){
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -108,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         transaction.commit();
     }
 
+    // Used to pass the login info to the chat fragment and activate the "Chat" button.
     public void loginInfo(String host, String user, String pass, int port, String filepath){
         chatFragment = new ChatFragment();
         Bundle args = new Bundle();
@@ -117,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         enableButton = true;
     }
 
+    // A class to create the warning fragment used in the openChat function.
     public static class WarningFragment extends DialogFragment {
 
         static WarningFragment newInstance() {
